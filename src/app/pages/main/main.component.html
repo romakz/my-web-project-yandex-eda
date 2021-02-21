@@ -1,0 +1,37 @@
+<main>
+  <div class="wrapper">
+
+    <div class="content">
+
+      <div class="tag-menu">
+
+        <mat-chip-list aria-label="food selection">
+          <mat-chip (click)="setSelect('all')">All</mat-chip>
+          <mat-chip (click)="setSelect('burgers')">Burgers</mat-chip>
+          <mat-chip (click)="setSelect('sushi')">Sushi</mat-chip>
+          <mat-chip (click)="setSelect('pizza')">Pizza</mat-chip>
+          <mat-chip (click)="setSelect('coffees')">Coffee</mat-chip>
+          <mat-chip (click)="setSelect('teas')">Tea</mat-chip>
+        </mat-chip-list>
+
+      </div>
+
+      <app-search (submitSearchStr)="acceptSearchStr($event)" [answer]="searchArray"></app-search>
+
+      <div class="carousel-box">
+        <app-carousel [restaurants]="restaurantsArray"></app-carousel>
+      </div>
+
+      <div class="food-flex-box">
+        <h2>Restaurants</h2>
+
+        <div class="card-box">
+          <app-restaurant-card style="margin-bottom: 30px" *ngFor="let restaurant of restaurants" [restaurant]="restaurant"></app-restaurant-card>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</main>
