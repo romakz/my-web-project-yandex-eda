@@ -19,14 +19,18 @@
       <app-search (submitSearchStr)="acceptSearchStr($event)" [answer]="searchArray"></app-search>
 
       <div class="carousel-box">
-        <app-carousel [restaurants]="restaurantsArray"></app-carousel>
+        <app-carousel [restaurants]="restaurantsArray.restaurantList"></app-carousel>
       </div>
 
       <div class="food-flex-box">
         <h2>Restaurants</h2>
 
         <div class="card-box">
-          <app-restaurant-card style="margin-bottom: 30px" *ngFor="let restaurant of restaurants" [restaurant]="restaurant"></app-restaurant-card>
+          <app-restaurant-card style="margin-bottom: 30px"
+                               *ngFor="let restaurant of restaurants"
+                               [routerLink]="['/restaurant', restaurant.id]"
+                               [restaurant]="restaurant">
+          </app-restaurant-card>
         </div>
       </div>
 

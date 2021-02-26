@@ -15,13 +15,13 @@ export class CarouselComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  nextSales() {
+  nextElem() {
     if (this.restaurants.length > this.showIndex) {
       this.showIndex += 3;
     }
   }
 
-  prevSales() {
+  prevElem() {
     if (3 < this.showIndex) {
       this.showIndex -= 3;
     }

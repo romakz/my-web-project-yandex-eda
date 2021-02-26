@@ -1,0 +1,12 @@
+<div class="food-card-body">
+
+  <div class="card-title">
+    <h3>{{product.name}} <span>{{product.mass}} {{product.value}}</span></h3>
+    <span>{{product.price}}</span>
+  </div>
+
+  <div class="card-image" *ngIf="product.imageUrl">
+    <img [src]="product.imageUrl" alt="Product image">
+  </div>
+
+</div>

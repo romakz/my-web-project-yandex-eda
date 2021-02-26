@@ -1,0 +1,21 @@
+<main>
+  <div class="wrapper">
+
+    <div class="content">
+      <h1>Profile</h1>
+
+      <div class="mat-tabs">
+        <nav mat-tab-nav-bar mat-align-tabs="center">
+          <a mat-tab-link routerLinkActive="is-active" routerLink="./personal-info">Personal information</a>
+          <a mat-tab-link routerLinkActive="is-active" routerLink="./payments">Cards</a>
+          <a mat-tab-link routerLinkActive="is-active" routerLink="./addresses">Addresses</a>
+          <a mat-tab-link routerLinkActive="is-active" routerLink="./order-history">Order history</a>
+        </nav>
+      </div>
+
+      <router-outlet></router-outlet>
+
+    </div>
+
+  </div>
+</main>

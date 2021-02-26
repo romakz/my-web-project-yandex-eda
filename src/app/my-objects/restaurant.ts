@@ -3,7 +3,10 @@ export class Restaurant {
     public id: number,
     public name: string,
     public rating: number,
-    public productList: string[],
-    public imageUrl: string
+    public productListType: string[],
+    public imageUrl: string,
+    public orderCostLimit: number,
+    public freeDeliveryCost: number,
+    public deliverCost: number
   ) {}
 }

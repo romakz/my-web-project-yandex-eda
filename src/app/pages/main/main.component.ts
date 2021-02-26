@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Restaurant} from '../../my-objects/restaurant';
+import {RestaurantWithProductsArray} from '../../my-objects/restaurant-with-products-array';
 
 @Component({
   selector: 'app-main',
@@ -9,22 +10,16 @@ import {Restaurant} from '../../my-objects/restaurant';
 export class MainComponent implements OnInit {
   select: string;
   restaurants: Restaurant[] = [];
-  restaurantsArray: Restaurant[] = [];
+  restaurantsArray: RestaurantWithProductsArray = new RestaurantWithProductsArray();
   searchArray: Restaurant[] = [];
-
 
   constructor() { }
 
   ngOnInit(): void {
     this.select = 'all';
+    this.restaurants = this.restaurantsArray.restaurantList;
 
-    this.restaurantsArray.push(new Restaurant(1, 'Nori', 4.9, ['sets', 'sushi', 'drinks'], 'assets/images/restaurants/restaurant1.jpg'));
-    this.restaurantsArray.push(new Restaurant(2, 'Mr. Burger', 4.4, ['combos', 'burgers'], 'assets/images/restaurants/restaurant2.jpg'));
-    this.restaurantsArray.push(new Restaurant(3, 'Coffeessimo', 4.7, ['coffees', 'teas'], 'assets/images/restaurants/restaurant3.jpg'));
-    this.restaurantsArray.push(new Restaurant(4, 'Burger Station', 4.8, ['burgers', 'drinks'], 'assets/images/restaurants/restaurant4.jpg'));
-    this.restaurantsArray.push(new Restaurant(5, 'Шеф Бургер', 4.3, ['burgers', 'pizza'], 'assets/images/restaurants/restaurant5.jpeg'));
-    this.restaurantsArray.push(new Restaurant(6, 'Киото Суши', 4.2, ['sets', 'sushi'], 'assets/images/restaurants/restaurant6.jpg'));
-    this.restaurants = this.restaurantsArray;
+    console.log(this.restaurantsArray);
   }
 
   setSelect(select: string) {
@@ -39,14 +34,14 @@ export class MainComponent implements OnInit {
   }
 
   getAllRestaurants(): Restaurant[] {
-    return this.restaurantsArray;
+    return this.restaurantsArray.restaurantList;
   }
 
   getRestaurantByTag(tag: string): Restaurant[] {
     let selectedRestaurants: Restaurant[] = [];
 
-    for (let elem of this.restaurantsArray) {
-      for (let productType of elem.productList) {
+    for (let elem of this.restaurantsArray.restaurantList) {
+      for (let productType of elem.productListType) {
         if (productType === tag) {
           console.log(tag);
           selectedRestaurants.push(elem);
@@ -63,7 +58,7 @@ export class MainComponent implements OnInit {
     console.log('acccept: ' + str);
     let ansArray: Restaurant[] = [];
 
-    for (let elem of this.restaurantsArray) {
+    for (let elem of this.restaurantsArray.restaurantList) {
       if (elem.name.includes(str)) {
         ansArray.push(elem);
         console.log("add: " + elem.name);
