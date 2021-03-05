@@ -16,6 +16,7 @@ export class RestaurantPageComponent implements OnInit {
   restaurant: Restaurant;
   tagWithProductsList: TagWithProductsList = new TagWithProductsList();
   restaurantWithProductsArray: RestaurantWithProductsArray = new RestaurantWithProductsArray();
+  cartItems: Product[] = [];
 
   constructor(
     private router: Router,
@@ -35,4 +36,20 @@ export class RestaurantPageComponent implements OnInit {
     this.imageUrl = `url("${this.restaurant.imageUrl}")`;
   }
 
+  toCart(product: Product) {
+    console.log(product.price);
+    this.cartItems.push(product);
+  }
+
+  removeProduct(indexItem: number) {
+    let arr: Product[] = [];
+
+    for (let i = 0; i < this.cartItems.length; i++) {
+      if (i !== indexItem) {
+        arr.push(this.cartItems[i]);
+      }
+    }
+
+    this.cartItems = arr;
+  }
 }

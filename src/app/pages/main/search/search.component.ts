@@ -7,19 +7,16 @@ import {Restaurant} from '../../../my-objects/restaurant';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  search: string = '';
+  search = '';
 
   @Input() answer: Restaurant[];
   @Output() submitSearchStr = new EventEmitter<string>();
 
   constructor() {}
 
-  ngOnInit(): void {
-    this.search = '';
-  }
+  ngOnInit(): void {}
 
   find() {
-    console.log("find: " + this.search);
     if (this.search !== '') {
       this.submitSearchStr.emit(this.search);
     } else {

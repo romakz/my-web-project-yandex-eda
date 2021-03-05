@@ -23,6 +23,7 @@ import { PaymentsComponent } from './pages/profile-page/payments/payments.compon
 import { AddressesComponent } from './pages/profile-page/addresses/addresses.component';
 import { OrderHistoryComponent } from './pages/profile-page/order-history/order-history.component';
 import { PersonalInfoComponent } from './pages/profile-page/personal-info/personal-info.component';
+import { ProductValueFormatPipe } from './pipes/product-value-format.pipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { PersonalInfoComponent } from './pages/profile-page/personal-info/person
     PaymentsComponent,
     AddressesComponent,
     OrderHistoryComponent,
-    PersonalInfoComponent
+    PersonalInfoComponent,
+    ProductValueFormatPipe
   ],
   imports: [
     BrowserModule,

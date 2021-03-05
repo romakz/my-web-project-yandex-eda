@@ -6,12 +6,12 @@
       <div class="tag-menu">
 
         <mat-chip-list aria-label="food selection">
-          <mat-chip (click)="setSelect('all')">All</mat-chip>
-          <mat-chip (click)="setSelect('burgers')">Burgers</mat-chip>
-          <mat-chip (click)="setSelect('sushi')">Sushi</mat-chip>
-          <mat-chip (click)="setSelect('pizza')">Pizza</mat-chip>
-          <mat-chip (click)="setSelect('coffees')">Coffee</mat-chip>
-          <mat-chip (click)="setSelect('teas')">Tea</mat-chip>
+          <mat-chip [ngClass]="{'is-select': select == 'all'}" (click)="setSelect('all')">All</mat-chip>
+          <mat-chip [ngClass]="{'is-select': select == 'burgers'}"  (click)="setSelect('burgers')">Burgers</mat-chip>
+          <mat-chip [ngClass]="{'is-select': select == 'sushi'}"  (click)="setSelect('sushi')">Sushi</mat-chip>
+          <mat-chip [ngClass]="{'is-select': select == 'pizza'}"  (click)="setSelect('pizza')">Pizza</mat-chip>
+          <mat-chip [ngClass]="{'is-select': select == 'coffees'}"  (click)="setSelect('coffees')">Coffee</mat-chip>
+          <mat-chip [ngClass]="{'is-select': select == 'teas'}"  (click)="setSelect('teas')">Tea</mat-chip>
         </mat-chip-list>
 
       </div>

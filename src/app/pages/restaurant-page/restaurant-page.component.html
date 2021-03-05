@@ -102,15 +102,19 @@
           <div class="menus-box">
 
             <div class="menu-tabs">
-              <a *ngFor="let tag of restaurant.productListType">{{tag}}</a>
+              <a class="tag" *ngFor="let tag of restaurant.productListType">{{tag}}</a>
             </div>
 
             <div class="menu-item-list">
               <div *ngFor="let tagWithProducts of tagWithProductsList.tagWithProductsList">
-                <h2>{{ tagWithProducts.tag }}</h2>
+                <h2>{{ tagWithProducts.tag | uppercase}}</h2>
 
                 <div class="list-of-items">
-                  <app-product-card *ngFor="let product of tagWithProducts.products" [style.margin]="'15px 0'" [product]="product"></app-product-card>
+                  <app-product-card *ngFor="let product of tagWithProducts.products"
+                                    [style.margin]="'15px 0'"
+                                    [product]="product"
+                                    (click)="toCart(product)"
+                  ></app-product-card>
                 </div>
               </div>
             </div>
@@ -119,7 +123,10 @@
         </div>
 
         <div class="simple-child">
-          <app-cart [restaurant]="restaurant"></app-cart>
+          <app-cart [restaurant]="restaurant"
+                    [cartItems]="cartItems"
+                    (removeItemIndex)="removeProduct($event)"
+          ></app-cart>
         </div>
       </div>
 

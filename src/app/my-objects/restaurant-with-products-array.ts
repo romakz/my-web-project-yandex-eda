@@ -26,15 +26,15 @@ export class RestaurantWithProductsArray {
 
     this.tagWithProductsLists[0].tagWithProductsList.push(new TagWithProducts('sets'));
     this.tagWithProductsLists[0].tagWithProductsList[0].products.push(new Product(1, "Сет Киото", 900, "г", 3900, 'assets/images/products/item1.jpeg'));
-    this.tagWithProductsLists[0].tagWithProductsList[0].products.push(new Product(2, "Сет Нори", 1.3, "кг", 5390, 'assets/images/products/item2.jpeg'));
-    this.tagWithProductsLists[0].tagWithProductsList[0].products.push(new Product(3, "Сет Токио", 2.8, "кг", 7790, 'assets/images/products/item3.jpeg'));
+    this.tagWithProductsLists[0].tagWithProductsList[0].products.push(new Product(2, "Сет Нори", 1300, "г", 5390, 'assets/images/products/item2.jpeg'));
+    this.tagWithProductsLists[0].tagWithProductsList[0].products.push(new Product(3, "Сет Токио", 2800, "г", 7790, 'assets/images/products/item3.jpeg'));
     this.tagWithProductsLists[0].tagWithProductsList.push(new TagWithProducts('sushi'));
     this.tagWithProductsLists[0].tagWithProductsList[1].products.push(new Product(1, "Филадельфия", 220, "г", 1490, 'assets/images/products/item4.jpeg'));
     this.tagWithProductsLists[0].tagWithProductsList[1].products.push(new Product(2, "Цезарь темпура", 250, "г", 1490, 'assets/images/products/item5.jpeg'));
     this.tagWithProductsLists[0].tagWithProductsList.push(new TagWithProducts('drinks'));
-    this.tagWithProductsLists[0].tagWithProductsList[2].products.push(new Product(1, "Coca-Cola", 1, "л", 490, 'assets/images/products/item6.jpeg'));
-    this.tagWithProductsLists[0].tagWithProductsList[2].products.push(new Product(2, "Fanta", 1, "л", 490, 'assets/images/products/item7.jpeg'));
-    this.tagWithProductsLists[0].tagWithProductsList[2].products.push(new Product(3, "Nori drink", 1, "л", 490, 'assets/images/products/item8.jpeg'));
+    this.tagWithProductsLists[0].tagWithProductsList[2].products.push(new Product(1, "Coca-Cola", 1000, "л", 490, 'assets/images/products/item6.jpeg'));
+    this.tagWithProductsLists[0].tagWithProductsList[2].products.push(new Product(2, "Fanta", 1000, "л", 490, 'assets/images/products/item7.jpeg'));
+    this.tagWithProductsLists[0].tagWithProductsList[2].products.push(new Product(3, "Nori drink", 1000, "л", 490, 'assets/images/products/item8.jpeg'));
 
     this.tagWithProductsLists[1].tagWithProductsList.push(new TagWithProducts('combos'));
     this.tagWithProductsLists[1].tagWithProductsList[0].products.push(new Product(1, "Комбо Бургер Мистер", 340, "г", 1800, ''));
@@ -72,7 +72,7 @@ export class RestaurantWithProductsArray {
 
 
     this.tagWithProductsLists[5].tagWithProductsList.push(new TagWithProducts('sets'));
-    this.tagWithProductsLists[5].tagWithProductsList[0].products.push(new Product(4, "Сет Мацури", 1.02, "кг", 9990, 'assets/images/products/item18.jpeg'));
+    this.tagWithProductsLists[5].tagWithProductsList[0].products.push(new Product(4, "Сет Мацури", 1200, "г", 9990, 'assets/images/products/item18.jpeg'));
     this.tagWithProductsLists[5].tagWithProductsList[0].products.push(new Product(5, "Сет Покемон", 850, "г", 9990, 'assets/images/products/item19.jpeg'));
     this.tagWithProductsLists[5].tagWithProductsList.push(new TagWithProducts('sushi'));
     this.tagWithProductsLists[5].tagWithProductsList[1].products.push(new Product(3, "Суши с креветкой", 65, "г", 990, 'assets/images/products/item20.jpeg'));
