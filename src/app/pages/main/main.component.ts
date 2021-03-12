@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Restaurant} from '../../my-objects/restaurant';
 import {RestaurantWithProductsArray} from '../../my-objects/restaurant-with-products-array';
+import {RestaurantService} from '../../services/restaurant.service';
 
 @Component({
   selector: 'app-main',
@@ -10,22 +11,20 @@ import {RestaurantWithProductsArray} from '../../my-objects/restaurant-with-prod
 export class MainComponent implements OnInit {
   select: string;
   restaurants: Restaurant[] = [];
-  restaurantsArray: RestaurantWithProductsArray = new RestaurantWithProductsArray();
   searchArray: Restaurant[] = [];
 
-  constructor() { }
+  constructor(
+    private restaurantService: RestaurantService
+  ) { }
 
   ngOnInit(): void {
     this.select = 'all';
-    this.restaurants = this.restaurantsArray.restaurantList;
-
-    console.log(this.restaurantsArray);
+    this.restaurants = this.getAllRestaurants();
   }
 
   setSelect(select: string) {
-
     if (select === 'all') {
-      this.restaurants = this.getAllRestaurants();
+      this.restaurants = this.restaurantService.getRestaurants();
     } else {
       this.restaurants = this.getRestaurantByTag(select);
     }
@@ -34,40 +33,15 @@ export class MainComponent implements OnInit {
   }
 
   getAllRestaurants(): Restaurant[] {
-    return this.restaurantsArray.restaurantList;
+    return this.restaurantService.getRestaurants();
   }
 
   getRestaurantByTag(tag: string): Restaurant[] {
-    let selectedRestaurants: Restaurant[] = [];
-
-    for (let elem of this.restaurantsArray.restaurantList) {
-      for (let productType of elem.productListType) {
-        if (productType === tag) {
-          console.log(tag);
-          selectedRestaurants.push(elem);
-        }
-      }
-    }
-
-    return selectedRestaurants;
+    return this.restaurantService.getRestaurantsByTag(tag);
   }
 
-
-
   acceptSearchStr(str: string) {
-    console.log('acccept: ' + str);
-    let ansArray: Restaurant[] = [];
-
-    for (let elem of this.restaurantsArray.restaurantList) {
-      if (elem.name.includes(str)) {
-        ansArray.push(elem);
-        console.log("add: " + elem.name);
-      }
-    }
-
-    console.log(ansArray);
-
-    this.searchArray = ansArray;
+    this.searchArray = this.restaurantService.getRestaurantsByName(str);
   }
 
 }

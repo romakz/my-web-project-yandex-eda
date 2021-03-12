@@ -24,6 +24,7 @@ import { AddressesComponent } from './pages/profile-page/addresses/addresses.com
 import { OrderHistoryComponent } from './pages/profile-page/order-history/order-history.component';
 import { PersonalInfoComponent } from './pages/profile-page/personal-info/personal-info.component';
 import { ProductValueFormatPipe } from './pipes/product-value-format.pipe';
+import {RestaurantService} from './services/restaurant.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,9 @@ import { ProductValueFormatPipe } from './pipes/product-value-format.pipe';
     MatChipsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    RestaurantService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
