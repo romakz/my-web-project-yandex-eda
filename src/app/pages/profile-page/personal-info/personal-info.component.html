@@ -1,1 +1,31 @@
-<p>personal-info works!</p>
+<div class="body">
+
+  <div class="flex">
+
+    <div class="l">
+
+      <div class="img-body">
+        <img [src]="client.imageUrl" alt="Profile avatar image">
+      </div>
+
+    </div>
+
+    <div class="r">
+      <div class="full-name">
+        {{client.firstName}} {{client.lastName}}
+      </div>
+      <div class="other-info">
+        <div class="info">
+          <p class="p-bold">Email:</p>
+          <p class="p-simple">{{client.login}}</p>
+        </div>
+        <div class="info">
+          <p class="p-bold">Telephone number:</p>
+          <p class="p-simple">{{client.telephone}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

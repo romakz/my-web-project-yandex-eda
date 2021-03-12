@@ -1,6 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Restaurant} from '../../../my-objects/restaurant';
 import {Product} from '../../../my-objects/product';
+import {OrderService} from '../../../services/order.service';
+import {Router} from '@angular/router';
+import {Order} from '../../../my-objects/order';
 
 @Component({
   selector: 'app-cart',
@@ -13,8 +16,12 @@ export class CartComponent implements OnInit {
   @Input() restaurant: Restaurant;
   @Output() removeItemIndex = new EventEmitter<number>();
   showDelivery = false;
+  clientLogin = 'romakz@gmail.com';
 
-  constructor() { }
+  constructor(
+    private orderService: OrderService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -22,7 +29,7 @@ export class CartComponent implements OnInit {
   calculateTotalCost(): number {
     this.totalCost = 0;
 
-    for (let item of this.cartItems) {
+    for (const item of this.cartItems) {
       this.totalCost += item.price;
     }
 
@@ -38,5 +45,15 @@ export class CartComponent implements OnInit {
 
   remove(indexItem: number) {
     this.removeItemIndex.emit(indexItem);
+  }
+
+  makeOrder() {
+    let cost = this.calculateTotalCost();
+
+    if (cost !== 0) {
+      let deliveryCost = this.showDelivery == true ? this.restaurant.deliverCost : 0;
+      this.orderService.addNewOrder(new Order(this.clientLogin, cost, this.cartItems, this.showDelivery, deliveryCost, new Date()));
+      this.router.navigate(['./profile/order-history']);
+    }
   }
 }

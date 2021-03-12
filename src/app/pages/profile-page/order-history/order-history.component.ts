@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Order} from '../../../my-objects/order';
+import {OrderService} from '../../../services/order.service';
 
 @Component({
   selector: 'app-order-history',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-history.component.scss']
 })
 export class OrderHistoryComponent implements OnInit {
+  orders: Order[] = [];
+  clientLogin = 'romakz@gmail.com';
 
-  constructor() { }
+  constructor(
+    private orderService: OrderService
+  ) { }
 
   ngOnInit(): void {
+    this.getOrders();
   }
 
+  getOrders() {
+    this.orders = this.orderService.getOrdersByLogin(this.clientLogin);
+  }
 }

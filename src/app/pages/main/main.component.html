@@ -19,7 +19,7 @@
       <app-search (submitSearchStr)="acceptSearchStr($event)" [answer]="searchArray"></app-search>
 
       <div class="carousel-box">
-        <app-carousel [restaurants]="restaurantsArray.restaurantList"></app-carousel>
+        <app-carousel [restaurants]="getAllRestaurants()"></app-carousel>
       </div>
 
       <div class="food-flex-box">

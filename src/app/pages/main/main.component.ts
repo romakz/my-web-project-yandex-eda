@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Restaurant} from '../../my-objects/restaurant';
-import {RestaurantWithProductsArray} from '../../my-objects/restaurant-with-products-array';
 import {RestaurantService} from '../../services/restaurant.service';
 
 @Component({

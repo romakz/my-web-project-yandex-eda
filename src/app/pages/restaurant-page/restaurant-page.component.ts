@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Restaurant} from '../../my-objects/restaurant';
 import {ActivatedRoute, Router} from '@angular/router';
-import {RestaurantWithProductsArray} from '../../my-objects/restaurant-with-products-array';
 import {Product} from '../../my-objects/product';
-import {TagWithProductsList} from '../../my-objects/tag-with-products-list';
+import {RestaurantService} from '../../services/restaurant.service';
+import {TagWithProducts} from '../../my-objects/tag-with-products';
+import {RestaurantProductsService} from '../../services/restaurant-products.service';
 
 @Component({
   selector: 'app-restaurant-page',
@@ -14,30 +15,28 @@ export class RestaurantPageComponent implements OnInit {
   imageUrl;
   restaurantId;
   restaurant: Restaurant;
-  tagWithProductsList: TagWithProductsList = new TagWithProductsList();
-  restaurantWithProductsArray: RestaurantWithProductsArray = new RestaurantWithProductsArray();
+  tagWithProducts: TagWithProducts[] = [];
   cartItems: Product[] = [];
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    private restaurantService: RestaurantService,
+    private restaurantProductsService: RestaurantProductsService,
   ) { }
 
   ngOnInit(): void {
     this.restaurantId = +this.route.snapshot.paramMap.get('id');
-    console.log('id res: ' + this.restaurantId);
     this.getRestaurant();
   }
 
   getRestaurant() {
-    this.restaurant = this.restaurantWithProductsArray.restaurantList[this.restaurantId - 1];
-    this.tagWithProductsList = this.restaurantWithProductsArray.tagWithProductsLists[this.restaurantId - 1];
-    console.log(this.tagWithProductsList);
+    this.restaurant = this.restaurantService.getRestaurantById(this.restaurantId);
+    this.tagWithProducts = this.restaurantProductsService.getProductsByProductTagsAndRestaurantId(this.restaurantId, this.restaurant.productListType);
     this.imageUrl = `url("${this.restaurant.imageUrl}")`;
   }
 
   toCart(product: Product) {
-    console.log(product.price);
     this.cartItems.push(product);
   }
 

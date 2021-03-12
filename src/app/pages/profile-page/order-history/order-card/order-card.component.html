@@ -1,0 +1,16 @@
+<div class="cart-order">
+
+  <div class="box">
+    <div class="bold">Items: </div>
+
+    <div *ngFor="let item of order.items; let i = index" class="list-of-items">
+      {{i + 1}}) {{item.name}} Price: {{item.price}}
+    </div>
+  </div>
+
+  <div class="box-price" *ngIf="order.deliveryStatus"><span class="bold">Delivery cost:</span> {{ order.deliveryCost }}</div>
+  <div class="box-price"><span class="bold">Total cost:</span> {{ order.cost }}</div>
+
+  <div class="box-date"><span class="bold">Date:</span> {{ order.date | date : 'medium' }}</div>
+
+</div>

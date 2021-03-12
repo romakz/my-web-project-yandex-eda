@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import {Restaurant} from '../my-objects/restaurant';
+import {LoggerService} from './logger.service';
 
 @Injectable()
 export class RestaurantService {
   restaurants: Restaurant[] = [];
 
-  constructor() {
+  constructor(
+    private loggerService: LoggerService
+  ) {
     this.restaurants.push(new Restaurant(1, 'Nori', 4.9, ['sets', 'sushi', 'drinks'], 'assets/images/restaurants/restaurant1.jpg', 1500, 1500, 990));
     this.restaurants.push(new Restaurant(2, 'Mr. Burger', 4.4, ['combos', 'burgers'], 'assets/images/restaurants/restaurant2.jpg',  1500, 1500, 990));
     this.restaurants.push(new Restaurant(3, 'Coffeessimo', 4.7, ['coffees', 'teas'], 'assets/images/restaurants/restaurant3.jpg',  1500, 1500, 990));
@@ -15,7 +18,22 @@ export class RestaurantService {
   }
 
   getRestaurants(): Restaurant[] {
+    this.loggerService.doLogWittObject('Get all restaurants', this.restaurants);
     return this.restaurants;
+  }
+
+  getRestaurantById(id: number) {
+    let restaurant: Restaurant = null;
+
+    for (let restaurant of this.restaurants) {
+      if (restaurant.id === id) {
+        this.loggerService.doLog('Get restaurant by id=' + id);
+        return restaurant;
+      }
+    }
+
+    this.loggerService.doLog('not fount restaurant by id=' + id);
+    return restaurant;
   }
 
   getRestaurantsByTag(tag: string): Restaurant[] {
@@ -29,6 +47,7 @@ export class RestaurantService {
       }
     }
 
+    this.loggerService.doLog('Get restaurants by tag=' + tag);
     return selectedRestaurants;
   }
 
@@ -41,6 +60,7 @@ export class RestaurantService {
       }
     }
 
+    this.loggerService.doLog('get restaurant by name=' + name);
     return ansArray;
   }
 }

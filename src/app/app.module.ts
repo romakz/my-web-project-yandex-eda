@@ -25,6 +25,12 @@ import { OrderHistoryComponent } from './pages/profile-page/order-history/order-
 import { PersonalInfoComponent } from './pages/profile-page/personal-info/personal-info.component';
 import { ProductValueFormatPipe } from './pipes/product-value-format.pipe';
 import {RestaurantService} from './services/restaurant.service';
+import {RestaurantProductsService} from './services/restaurant-products.service';
+import {OrderService} from './services/order.service';
+import {MatTabsModule} from '@angular/material/tabs';
+import {ClientService} from './services/client.service';
+import { OrderCardComponent } from './pages/profile-page/order-history/order-card/order-card.component';
+import {LoggerService} from './services/logger.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +49,8 @@ import {RestaurantService} from './services/restaurant.service';
     AddressesComponent,
     OrderHistoryComponent,
     PersonalInfoComponent,
-    ProductValueFormatPipe
+    ProductValueFormatPipe,
+    OrderCardComponent
   ],
   imports: [
     BrowserModule,
@@ -52,11 +59,16 @@ import {RestaurantService} from './services/restaurant.service';
     MatSelectModule,
     MatMenuModule,
     MatIconModule,
+    MatTabsModule,
     MatChipsModule,
     FormsModule
   ],
   providers: [
-    RestaurantService
+    RestaurantService,
+    RestaurantProductsService,
+    OrderService,
+    ClientService,
+    LoggerService
   ],
   bootstrap: [AppComponent]
 })
