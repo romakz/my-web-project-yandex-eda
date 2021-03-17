@@ -31,6 +31,9 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {ClientService} from './services/client.service';
 import { OrderCardComponent } from './pages/profile-page/order-history/order-card/order-card.component';
 import {LoggerService} from './services/logger.service';
+import {CardServiceService} from './services/card-service.service';
+import { CreditCardComponent } from './pages/profile-page/payments/credit-card/credit-card.component';
+import { AddCardComponent } from './pages/profile-page/payments/add-card/add-card.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,9 @@ import {LoggerService} from './services/logger.service';
     OrderHistoryComponent,
     PersonalInfoComponent,
     ProductValueFormatPipe,
-    OrderCardComponent
+    OrderCardComponent,
+    CreditCardComponent,
+    AddCardComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +73,8 @@ import {LoggerService} from './services/logger.service';
     RestaurantProductsService,
     OrderService,
     ClientService,
-    LoggerService
+    LoggerService,
+    CardServiceService
   ],
   bootstrap: [AppComponent]
 })

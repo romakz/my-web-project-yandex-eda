@@ -8,7 +8,7 @@
   </div>
 
   <div class="search-ans">
-    <div class="ans-res" *ngFor="let res of answer">{{res.name}}</div>
+    <div [routerLink]="['/restaurant', res.id]" class="ans-res" *ngFor="let res of answer">{{res.name}}</div>
   </div>
 
 </div>

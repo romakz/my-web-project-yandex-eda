@@ -1,0 +1,25 @@
+<div class="body">
+
+  <div class="card-box">
+
+    <div class="message" *ngIf="cards.length === 0">
+      <p class="bold">У вас пока нет заказовплатежных карт</p>
+    </div>
+
+
+    <div>
+      <h2 class="bold" *ngIf="cards.length !== 0">Your Cards</h2>
+      <div class="card-list">
+        <app-credit-card [ngStyle]="{'margin-bottom': '30px'}" [card]="card" (deleteAction)="deleteCard($event)" *ngFor="let card of cards"></app-credit-card>
+      </div>
+    </div>
+
+    <div class="add-btn-div" *ngIf="showAddNewCardDiv === false">
+      <button class="add-btn" (click)="addNewCard()">Add new card</button>
+    </div>
+
+    <app-add-card [ngStyle]="{'margin-top': '30px'}" *ngIf="showAddNewCardDiv" (saveAction)="saveNewCard($event)" (closeAction)="closeAddCard($event)"></app-add-card>
+
+  </div>
+
+</div>
