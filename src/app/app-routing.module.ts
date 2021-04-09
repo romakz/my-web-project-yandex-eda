@@ -7,6 +7,9 @@ import {PersonalInfoComponent} from './pages/profile-page/personal-info/personal
 import {AddressesComponent} from './pages/profile-page/addresses/addresses.component';
 import {PaymentsComponent} from './pages/profile-page/payments/payments.component';
 import {OrderHistoryComponent} from './pages/profile-page/order-history/order-history.component';
+import {CanActiveProfilePageGuard} from './guards/can-active-profile-page.guard';
+import {CanActiveChildProfilePageGuard} from './guards/can-active-child-profile-page.guard';
+import {CanDeactivateCreditCardGuard} from './guards/can-deactivate-credit-card.guard';
 
 
 const routes: Routes = [
@@ -17,10 +20,16 @@ const routes: Routes = [
     component: ProfilePageComponent,
     children: [
       { path: 'personal-info', component: PersonalInfoComponent },
-      { path: 'payments', component: PaymentsComponent },
+      {
+        path: 'payments',
+        component: PaymentsComponent,
+        canDeactivate: [CanDeactivateCreditCardGuard]
+      },
       { path: 'addresses', component: AddressesComponent },
       { path: 'order-history', component: OrderHistoryComponent },
-    ]
+    ],
+    canActivate: [CanActiveProfilePageGuard],
+    canActivateChild: [CanActiveChildProfilePageGuard]
   },
   { path: '', redirectTo: '/main', pathMatch: 'full'}
 ];

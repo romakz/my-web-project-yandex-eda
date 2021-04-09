@@ -34,6 +34,10 @@ import {LoggerService} from './services/logger.service';
 import {CardServiceService} from './services/card-service.service';
 import { CreditCardComponent } from './pages/profile-page/payments/credit-card/credit-card.component';
 import { AddCardComponent } from './pages/profile-page/payments/add-card/add-card.component';
+import {AuthService} from './services/auth.service';
+import {CanActiveProfilePageGuard} from './guards/can-active-profile-page.guard';
+import {CanActiveChildProfilePageGuard} from './guards/can-active-child-profile-page.guard';
+import {CanDeactivateCreditCardGuard} from './guards/can-deactivate-credit-card.guard';
 
 @NgModule({
   declarations: [
@@ -74,7 +78,11 @@ import { AddCardComponent } from './pages/profile-page/payments/add-card/add-car
     OrderService,
     ClientService,
     LoggerService,
-    CardServiceService
+    CardServiceService,
+    AuthService,
+    CanActiveProfilePageGuard,
+    CanActiveChildProfilePageGuard,
+    CanDeactivateCreditCardGuard
   ],
   bootstrap: [AppComponent]
 })
