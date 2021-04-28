@@ -1,5 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Card} from '../../../../my-objects/card';
+import {FormControl, FormGroup} from '@angular/forms';
+import {AuthService} from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-add-card',
@@ -7,25 +9,28 @@ import {Card} from '../../../../my-objects/card';
   styleUrls: ['./add-card.component.scss']
 })
 export class AddCardComponent implements OnInit {
-  cardNumber: string;
-  date: string;
-  userFullName: string;
-  cvc: string;
-  clientLogin = 'romakz@gmail.com';
+  cardForm: FormGroup;
   @Output() saveAction = new EventEmitter<Card>();
   @Output() closeAction = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.cardNumber = '';
-    this.date = '';
-    this.userFullName = '';
-    this.cvc = '';
+    this.initForm();
+  }
+
+  initForm() {
+    this.cardForm = new FormGroup({
+      cardNumber: new FormControl(''),
+      date: new FormControl(''),
+      userFullName: new FormControl(''),
+      cvc: new FormControl(''),
+      userId: new FormControl(this.authService.getUserId())
+    });
   }
 
   saveCard() {
-    this.saveAction.emit(new Card(this.cardNumber, this.date, this.userFullName, this.cvc, this.clientLogin));
+    this.saveAction.emit(this.cardForm.getRawValue());
   }
 
   close() {

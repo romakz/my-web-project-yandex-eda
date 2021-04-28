@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Card} from '../../../my-objects/card';
 import {CardServiceService} from '../../../services/card-service.service';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-payments',
@@ -9,24 +10,27 @@ import {CardServiceService} from '../../../services/card-service.service';
 })
 export class PaymentsComponent implements OnInit {
   cards: Card[] = [];
-  clientLogin = 'romakz@gmail.com';
   showAddNewCardDiv = false;
 
   constructor(
-    private cardService: CardServiceService
+    private cardService: CardServiceService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    this.getCardsByLogin();
+    this.getCardsByUserId();
   }
 
-  getCardsByLogin() {
-    this.cards = this.cardService.getCardByLogin(this.clientLogin);
+  getCardsByUserId() {
+    this.cardService.getCardByUserId(this.authService.getUserId()).subscribe(res => {
+      this.cards = res;
+    });
   }
 
-  deleteCard(card: Card) {
-    this.cardService.deleteCard(card);
-    this.getCardsByLogin();
+  deleteCard(cardId: number) {
+    this.cardService.deleteCardById(cardId).subscribe(res => {
+      this.getCardsByUserId();
+    });
   }
 
   addNewCard() {
@@ -34,9 +38,10 @@ export class PaymentsComponent implements OnInit {
   }
 
   saveNewCard(card: Card) {
-    this.cardService.addNewCard(card);
-    this.showAddNewCardDiv = false;
-    this.getCardsByLogin();
+    this.cardService.addNewCard(card).subscribe(res => {
+      this.getCardsByUserId();
+      this.showAddNewCardDiv = false;
+    });
   }
 
   closeAddCard(status: boolean) {

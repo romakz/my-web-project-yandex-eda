@@ -10,6 +10,7 @@ import {RestaurantService} from '../../services/restaurant.service';
 export class MainComponent implements OnInit {
   select: string;
   restaurants: Restaurant[] = [];
+  restaurantsForSlider: Restaurant[] = [];
   searchArray: Restaurant[] = [];
 
   constructor(
@@ -18,29 +19,36 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.select = 'all';
-    this.restaurants = this.getAllRestaurants();
+    this.getAllRestaurants();
   }
 
   setSelect(select: string) {
     if (select === 'all') {
-      this.restaurants = this.restaurantService.getRestaurants();
+      this.getAllRestaurants();
     } else {
-      this.restaurants = this.getRestaurantByTag(select);
+      this.getRestaurantByTag(select);
     }
 
     this.select = select;
   }
 
-  getAllRestaurants(): Restaurant[] {
-    return this.restaurantService.getRestaurants();
+  getAllRestaurants() {
+    this.restaurantService.getRestaurants().subscribe(res => {
+      this.restaurants = res;
+      this.restaurantsForSlider = res;
+    });
   }
 
-  getRestaurantByTag(tag: string): Restaurant[] {
-    return this.restaurantService.getRestaurantsByTag(tag);
+  getRestaurantByTag(tag: string) {
+    this.restaurantService.getRestaurantsByTag(tag).subscribe(res => {
+      this.restaurants = res;
+    });
   }
 
   acceptSearchStr(str: string) {
-    this.searchArray = this.restaurantService.getRestaurantsByName(str);
+    this.restaurantService.getRestaurantsByName(str).subscribe(res => {
+      this.searchArray = res;
+    });
   }
 
 }

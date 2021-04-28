@@ -6,9 +6,8 @@
       <p class="bold">У вас пока нет заказовплатежных карт</p>
     </div>
 
-
-    <div>
-      <h2 class="bold" *ngIf="cards.length !== 0">Your Cards</h2>
+    <div *ngIf="cards.length !== 0">
+      <h2 class="bold">Your Cards</h2>
       <div class="card-list">
         <app-credit-card [ngStyle]="{'margin-bottom': '30px'}" [card]="card" (deleteAction)="deleteCard($event)" *ngFor="let card of cards"></app-credit-card>
       </div>

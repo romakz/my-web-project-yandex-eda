@@ -1,0 +1,51 @@
+<div class="body">
+  <h1>Sign Up</h1>
+  <div class="form-body">
+    <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+      <mat-form-field class="input-f">
+        <mat-label>Email:</mat-label>
+        <input type="email" matInput formControlName="login" placeholder="email@gmail.com">
+        <mat-error *ngIf="login.hasError('email') && !login.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="login.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="input-f">
+        <mat-label>Password:</mat-label>
+        <input type="password" matInput formControlName="password" placeholder="password">
+        <mat-error *ngIf="login.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="input-f">
+        <mat-label>First Name:</mat-label>
+        <input type="text" matInput formControlName="firstName" placeholder="first name">
+        <mat-error *ngIf="firstName.hasError('required')">
+          First Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="input-f">
+        <mat-label>Last Name:</mat-label>
+        <input type="text" matInput formControlName="lastName" placeholder="last name">
+        <mat-error *ngIf="lastName.hasError('required')">
+          Last Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="input-f">
+        <mat-label>Telephone:</mat-label>
+        <input type="text" matInput formControlName="telephone" placeholder="telephone">
+        <mat-error *ngIf="telephone.hasError('required')">
+          Telephone is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <button class="btn" type="submit" mat-raised-button color="primary" [disabled]="!signUpForm.valid">Primary</button>
+    </form>
+  </div>
+</div>

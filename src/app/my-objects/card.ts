@@ -1,16 +1,18 @@
 export class Card {
+  public id: number;
   public cardNumber: string;
   public date: string;
   public userFullName: string;
   public cvc: string;
-  public clientLogin: string;
+  public userId: string;
 
 
-  constructor(cardNumber: string, date: string, userFullName: string, cvc: string, clientLogin: string) {
+  constructor(id: number, cardNumber: string, date: string, userFullName: string, cvc: string, userId: string) {
+    this.id = id;
     this.cardNumber = cardNumber;
     this.date = date;
     this.userFullName = userFullName;
     this.cvc = cvc;
-    this.clientLogin = clientLogin;
+    this.userId = userId;
   }
 }

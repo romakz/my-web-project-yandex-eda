@@ -1,0 +1,25 @@
+.body {
+  padding: 200px 0 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-body {
+  width: auto;
+  //background: #121212;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #000;
+}
+
+.btn {
+  display: inline-block;
+  width: 100%;
+}
+
+.input-f {
+  width: 300px;
+}

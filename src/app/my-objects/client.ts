@@ -1,4 +1,5 @@
 export class Client {
+  public id: number;
   public login: string;
   public password: string;
   public firstName: string;

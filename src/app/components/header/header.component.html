@@ -9,7 +9,7 @@
     </div>
 
     <div class="left-content">
-      <button *ngIf="getAuthStatus() === false">Sign Up</button>
+      <button *ngIf="getAuthStatus() === false" (click)="signUp()">Sign Up</button>
       <button *ngIf="getAuthStatus() === false" (click)="login()">Sign In</button>
 
       <button *ngIf="getAuthStatus() === true" class="menu-btn" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">

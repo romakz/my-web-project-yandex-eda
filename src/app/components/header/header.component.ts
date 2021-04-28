@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   login() {
-    this.authService.login();
+    this.router.navigate(['/sign-in']);
   }
 
   logout() {
@@ -32,5 +32,9 @@ export class HeaderComponent implements OnInit {
 
   getAuthStatus(): boolean {
     return this.authService.isAuth();
+  }
+
+  signUp() {
+    this.router.navigate(['/sign-up']);
   }
 }

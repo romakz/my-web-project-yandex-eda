@@ -1,42 +1,26 @@
 import { Injectable } from '@angular/core';
 import {Client} from '../my-objects/client';
 import {LoggerService} from './logger.service';
+import {AuthService} from './auth.service';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class ClientService {
-  clients: Client[] = [];
+  private api = 'http://localhost:3000/clients';
 
   constructor(
-    private loggerService: LoggerService
-  ) {
-    this.initClients();
+    private loggerService: LoggerService,
+    private authService: AuthService,
+    private http: HttpClient
+  ) {}
+
+  getClient(userId: number): Observable<Client> {
+    this.loggerService.doLog('get client by userId=' + userId);
+    return this.http.get<Client>(this.api + `/${userId}`);
   }
 
-  initClients() {
-    this.clients.push(
-      new Client(
-        'romakz@gmail.com',
-        '123',
-        'Ramazan',
-        'Alimzhan',
-        'assets/images/logos/account-profile.webp',
-        '+ 7-707-777-77-77'
-      ));
-
-    this.loggerService.doLog('Init client romakz@gmail.com.');
-  }
-
-  getClient(login: string): Client {
-    let result: Client = null;
-
-    for (let client of this.clients) {
-      if (client.login === login) {
-        result = client;
-        break;
-      }
-    }
-
-    this.loggerService.doLog('get client by login=' + login);
-    return result;
+  createNewClient(client: Client): Observable<Client> {
+    return this.http.post<Client>(this.api, client);
   }
 }

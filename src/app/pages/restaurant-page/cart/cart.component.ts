@@ -4,6 +4,7 @@ import {Product} from '../../../my-objects/product';
 import {OrderService} from '../../../services/order.service';
 import {Router} from '@angular/router';
 import {Order} from '../../../my-objects/order';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -20,7 +21,8 @@ export class CartComponent implements OnInit {
 
   constructor(
     private orderService: OrderService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +54,7 @@ export class CartComponent implements OnInit {
 
     if (cost !== 0) {
       let deliveryCost = this.showDelivery == true ? this.restaurant.deliverCost : 0;
-      this.orderService.addNewOrder(new Order(this.clientLogin, cost, this.cartItems, this.showDelivery, deliveryCost, new Date()));
+      this.orderService.addNewOrder(new Order(this.authService.getUserId(), cost, this.cartItems, this.showDelivery, deliveryCost, new Date())).subscribe();
       this.router.navigate(['./profile/order-history']);
     }
   }

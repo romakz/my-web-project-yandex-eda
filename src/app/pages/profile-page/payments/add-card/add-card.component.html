@@ -1,24 +1,24 @@
 <div class="cart-order">
   <p class="bold">Add new Card</p>
-  <form>
+  <form [formGroup]="cardForm">
     <div class="box-price">
       <label class="bold">Card Number: </label>
-      <input type="text" [(ngModel)]="cardNumber" [ngModelOptions]="{standalone: true}">
+      <input type="text" formControlName="cardNumber">
     </div>
 
     <div class="box-price">
       <label class="bold">Date: </label>
-      <input type="text" [(ngModel)]="date" [ngModelOptions]="{standalone: true}">
+      <input type="text" formControlName="date">
     </div>
 
     <div class="box-price">
       <label class="bold">Full Name: </label>
-      <input type="text" [(ngModel)]="userFullName" [ngModelOptions]="{standalone: true}">
+      <input type="text" formControlName="userFullName">
     </div>
 
     <div class="box-price">
       <label class="bold">CVC: </label>
-      <input type="text" [(ngModel)]="cvc" [ngModelOptions]="{standalone: true}">
+      <input type="text" formControlName="cvc">
     </div>
 
     <div class="action-btns">

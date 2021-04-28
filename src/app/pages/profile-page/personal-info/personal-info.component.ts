@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Client} from '../../../my-objects/client';
 import {ClientService} from '../../../services/client.service';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-personal-info',
@@ -9,18 +10,20 @@ import {ClientService} from '../../../services/client.service';
 })
 export class PersonalInfoComponent implements OnInit {
   client: Client;
-  clientLogin = 'romakz@gmail.com';
 
   constructor(
     private clientService: ClientService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    this.client = this.getClient(this.clientLogin);
+    this.getClient();
   }
 
-  getClient(login: string): Client {
-    return this.clientService.getClient(login);
+  getClient() {
+    this.clientService.getClient(this.authService.getUserId()).subscribe(res => {
+      this.client = res;
+    });
   }
 
 }

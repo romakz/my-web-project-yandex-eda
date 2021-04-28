@@ -8,7 +8,7 @@ import {Card} from '../../../../my-objects/card';
 })
 export class CreditCardComponent implements OnInit {
   @Input() card: Card;
-  @Output() deleteAction = new EventEmitter<Card>();
+  @Output() deleteAction = new EventEmitter<number>();
 
   constructor() { }
 
@@ -16,7 +16,6 @@ export class CreditCardComponent implements OnInit {
   }
 
   deleteCard() {
-    console.log('delete');
-    this.deleteAction.emit(this.card);
+    this.deleteAction.emit(this.card.id);
   }
 }

@@ -31,9 +31,11 @@ export class RestaurantPageComponent implements OnInit {
   }
 
   getRestaurant() {
-    this.restaurant = this.restaurantService.getRestaurantById(this.restaurantId);
-    this.tagWithProducts = this.restaurantProductsService.getProductsByProductTagsAndRestaurantId(this.restaurantId, this.restaurant.productListType);
-    this.imageUrl = `url("${this.restaurant.imageUrl}")`;
+    this.restaurantService.getRestaurantById(this.restaurantId).subscribe(res => {
+      this.restaurant = res;
+      this.tagWithProducts = this.restaurantProductsService.getProductsByProductTagsAndRestaurantId(this.restaurantId, this.restaurant.productListType);
+      this.imageUrl = `url("${this.restaurant.imageUrl}")`;
+    });
   }
 
   toCart(product: Product) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Order} from '../../../my-objects/order';
 import {OrderService} from '../../../services/order.service';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-order-history',
@@ -12,7 +13,8 @@ export class OrderHistoryComponent implements OnInit {
   clientLogin = 'romakz@gmail.com';
 
   constructor(
-    private orderService: OrderService
+    private orderService: OrderService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -20,6 +22,8 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   getOrders() {
-    this.orders = this.orderService.getOrdersByLogin(this.clientLogin);
+    this.orderService.getOrdersByUserId(this.authService.getUserId()).subscribe(res => {
+      this.orders = res;
+    });
   }
 }

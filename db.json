@@ -1,0 +1,96 @@
+{
+  "cards": [],
+  "orders": [],
+  "clients": [
+    {
+      "id": 1,
+      "login": "romakz@gmail.com",
+      "password": "123",
+      "firstName": "Ramazan",
+      "lastName": "Alimzhan",
+      "imageUrl": "assets/images/logos/account-profile.webp",
+      "telephone": "+7-707-777-77-77"
+    }
+  ],
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "Nori",
+      "rating": 4.9,
+      "productListType": [
+        "sets",
+        "sushi",
+        "drinks"
+      ],
+      "imageUrl": "assets/images/restaurants/restaurant1.jpg",
+      "orderCostLimit": 1500,
+      "freeDeliveryCost": 1500,
+      "deliverCost": 990
+    },
+    {
+      "id": 2,
+      "name": "Mr. Burger",
+      "rating": 4.4,
+      "productListType": [
+        "combos",
+        "burgers"
+      ],
+      "imageUrl": "assets/images/restaurants/restaurant2.jpg",
+      "orderCostLimit": 1500,
+      "freeDeliveryCost": 1500,
+      "deliverCost": 990
+    },
+    {
+      "id": 3,
+      "name": "Coffeessimo",
+      "rating": 4.7,
+      "productListType": [
+        "coffees",
+        "teas"
+      ],
+      "imageUrl": "assets/images/restaurants/restaurant3.jpg",
+      "orderCostLimit": 1500,
+      "freeDeliveryCost": 1500,
+      "deliverCost": 990
+    },
+    {
+      "id": 4,
+      "name": "Burger Station",
+      "rating": 4.8,
+      "productListType": [
+        "burgers",
+        "drinks"
+      ],
+      "imageUrl": "assets/images/restaurants/restaurant4.jpg",
+      "orderCostLimit": 1500,
+      "freeDeliveryCost": 1500,
+      "deliverCost": 990
+    },
+    {
+      "id": 5,
+      "name": "Шеф Бургер",
+      "rating": 4.3,
+      "productListType": [
+        "burgers",
+        "pizza"
+      ],
+      "imageUrl": "assets/images/restaurants/restaurant5.jpeg",
+      "orderCostLimit": 1500,
+      "freeDeliveryCost": 1500,
+      "deliverCost": 990
+    },
+    {
+      "id": 6,
+      "name": "Киото Суши",
+      "rating": 4.2,
+      "productListType": [
+        "sets",
+        "sushi"
+      ],
+      "imageUrl": "assets/images/restaurants/restaurant6.jpg",
+      "orderCostLimit": 1500,
+      "freeDeliveryCost": 1500,
+      "deliverCost": 990
+    }
+  ]
+}

@@ -1,7 +1,8 @@
 import {Product} from './product';
 
 export class Order {
-  public clientLogin: string;
+  public id: number;
+  public userId: number;
   public cost: number;
   public items: Product[];
   public deliveryStatus: boolean;
@@ -9,8 +10,8 @@ export class Order {
   public date: Date;
 
 
-  constructor(clientLogin: string, cost: number, items: Product[], deliveryStatus: boolean, deliveryCost: number, date: Date) {
-    this.clientLogin = clientLogin;
+  constructor(userId: number, cost: number, items: Product[], deliveryStatus: boolean, deliveryCost: number, date: Date) {
+    this.userId = userId;
     this.cost = cost;
     this.items = items;
     this.deliveryStatus = deliveryStatus;

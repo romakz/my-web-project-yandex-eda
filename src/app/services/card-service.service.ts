@@ -1,57 +1,24 @@
 import { Injectable } from '@angular/core';
 import {LoggerService} from './logger.service';
 import {Card} from '../my-objects/card';
-import {log} from 'util';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class CardServiceService {
-  cards: Card[] = [];
+  private api = 'http://localhost:3000/cards';
 
-  constructor(
-    private loggerService: LoggerService
-  ) {
-    this.initCards();
+  constructor(private loggerService: LoggerService, private http: HttpClient) {}
+
+  public getCardByUserId(userId: number): Observable<Card[]> {
+    return this.http.get<Card[]>(this.api + `?userId=${userId}`);
   }
 
-  initCards() {
-    this.cards.push(
-      new Card(
-        '1234-12341-234-1234',
-        '2025-01-01',
-        'Ramazan Alimzhan',
-        '123',
-        'romakz@gmail.com')
-    );
+  public addNewCard(card: Card): Observable<Card> {
+    return this.http.post<Card>(this.api, card);
   }
 
-  getCardByLogin(login: string): Card[] {
-    let result: Card[] = [];
-
-    for (let card of this.cards) {
-      if (card.clientLogin === login) {
-        result.push(card);
-      }
-    }
-
-    return result;
-  }
-
-  addNewCard(card: Card): void {
-    this.cards.push(card);
-  }
-
-  deleteCard(card: Card) {
-    let result: Card[] = [];
-
-    for (let elem of this.cards) {
-      if (elem !== card) {
-        console.log('add');
-        console.log('deded');
-        console.log(card);
-        result.push(elem);
-      }
-    }
-
-    this.cards = result;
+  public deleteCardById(cardId: number): Observable<any> {
+    return this.http.delete<any>(this.api + `/${cardId}`);
   }
 }
